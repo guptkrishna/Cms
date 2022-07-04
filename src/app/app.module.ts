@@ -17,7 +17,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { LoginPageComponent } from './components/Login/login-page/login-page.component';
 import { SignupPageComponent } from './components/signup/signup-page/signup-page.component';
-import { NewComponentComponent } from './components/dateTime/new-component/new-component.component';
 
 
 
@@ -35,7 +34,7 @@ import { NewComponentComponent } from './components/dateTime/new-component/new-c
     LoginPageComponent,
     SignupPageComponent,
     routingComponent,
-    NewComponentComponent,
+   
     
 
   ],
