@@ -1,0 +1,128 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+  </button>
+  <span>Employee</span>
+  <span class="example-spacer"></span>
+  <button mat-raised-button color="warn" (click)="openEmployee()">Add New</button>
+</mat-toolbar>
+
+<div  class="container  ">
+  <div style="margin-top: 10px;">
+    <mat-form-field appearance="fill" style="width: 20%;">
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Exp." #input>
+    </mat-form-field>
+
+    <button mat-button class="m"  (click)="exportExcel()"><img src="assets\image\excel1.png" width="25px" height="25px"></button> 
+    <button mat-button (click)="openPDF()"><mat-icon color="warn"> picture_as_pdf</mat-icon></button>
+    
+    <div class="mat-elevation-z8">
+      <div class="example-container ">
+        <table mat-table [dataSource]="dataSource" matSort id="htmlData">
+
+          <ng-container matColumnDef="companyName">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header> Company Name </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.company.companyName}} </td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="employeeCode">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>Code </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.employeeCode}} </td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="employeeFirstName">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>First Name </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.employeeFirstName}} </td>
+          </ng-container>
+
+
+          <ng-container cdkColumnDef="employeeLastName">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>Last Name </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.employeeLastName}} </td>
+          </ng-container>
+
+
+          <ng-container cdkColumnDef="employeeEmail">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>Email </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.employeeEmail}} </td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="employeeMobileNumber">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>Mobile Number </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.employeeMobileNumber}} </td>
+          </ng-container>
+
+
+          <ng-container cdkColumnDef="employeePortalUserName">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>Portal User Name </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.employeePortalUserName}} </td>
+          </ng-container>
+
+
+          <ng-container cdkColumnDef="employeeStatus">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>Status </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.employeeStatus}} </td>
+          </ng-container>
+
+
+          <ng-container cdkColumnDef="employeeTeam">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>Team </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.employeeTeam}} </td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="address1">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>Parmanent Address</th>
+            <td cdk-cell *cdkCellDef="let row">{{row.address1}}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="address2">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>Current Address</th>
+            <td cdk-cell *cdkCellDef="let row">{{row.address2}}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="city">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>City</th>
+            <td cdk-cell *cdkCellDef="let row">{{row.city}}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="state">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>State</th>
+            <td cdk-cell *cdkCellDef="let row">{{row.state}}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="pinCode">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>Pin Code</th>
+            <td cdk-cell *cdkCellDef="let row">{{row.pinCode}}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="country">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>Country</th>
+            <td cdk-cell *cdkCellDef="let row">{{row.country}}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="action">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header> Action </th>
+            <td cdk-cell *cdkCellDef="let row">
+              <button mat-icon-button>
+
+                <mat-icon color="primary" (click)="editEmployee(row)">edit</mat-icon>
+                <mat-icon color="warn" (click)="deleteEmployee(row.id)">delete</mat-icon>
+              </button>
+
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+          </tr>
+        </table>
+        <br>
+      </div>  
+      <mat-paginator [pageSizeOptions]="[ 5, 10, 25, 100]" aria-label="Select page of employees"></mat-paginator>
+    </div>
+  </div>
+</div>

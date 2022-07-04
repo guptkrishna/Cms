@@ -1,0 +1,29 @@
+{"countries": [{
+    
+    "name":"India"
+},
+{
+    
+    "name":"USA"
+},{
+    "name":"Chain"
+}
+],
+"states":[
+    {
+       
+        "name":"Alabama",
+        "country_name":"USA"
+    },
+    {
+       
+        "name":"Utter Pardesh",
+        "country_name":"India"
+    },
+    {
+        
+        "name":"Delhi",
+        "country_name":"India"
+    }
+]
+}

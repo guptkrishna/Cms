@@ -1,0 +1,117 @@
+<h1 mat-dialog-title>Add Complex</h1>
+<div mat-dialog-content>
+  <form [formGroup]="complexForm" autocomplete="off">
+    <mat-form-field class="invisible example-full-width" hideRequiredMarker="hide" appearance="outline">
+      <mat-label>Complex Id</mat-label>
+      <input formControlName="id" matInput placeholder="">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Company </mat-label>      
+      <mat-select formControlName="companyId"  required >
+        <mat-option>--select--</mat-option>       
+        <mat-option [value]="com.Company" *ngFor="let com of Company" [value]="com.id">{{com.companyName}}</mat-option>  
+      </mat-select>
+    </mat-form-field>
+    <!-- <mat-form-field appearance="outline">
+      <mat-label>companyId</mat-label>
+      <input formControlName="companyId" matInput placeholder="">
+    </mat-form-field> -->
+    <mat-form-field appearance="outline">
+      <mat-label> Code</mat-label>
+      <input formControlName="complexCode" matInput placeholder="">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> Name</mat-label>
+      <input formControlName="complexName" matInput placeholder="">
+      <span style="color:red;" *ngIf="complexName && complexName.invalid && complexName.touched">Required</span>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> Description</mat-label>
+      <input formControlName="complexDescription" matInput placeholder="">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> Availability</mat-label>
+      <input formControlName="complexAvailability" matInput placeholder="">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> Condition</mat-label>
+      <input formControlName="complexCondition" matInput placeholder="">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> Criticality</mat-label>
+      <input formControlName="complexCriticality" matInput placeholder="">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> Total Gross Area</mat-label>
+      <input pattern="[0-9]*" formControlName="complexTotalGrossArea" matInput placeholder="">
+      <span style="color:red;" *ngIf="complexTotalGrossArea && complexTotalGrossArea.invalid  && complexTotalGrossArea.touched">Number is required</span>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> Covered Area</mat-label>
+      <input pattern="[0-9]*" formControlName="complexCoveredArea" matInput placeholder="">
+      <span style="color:red;" *ngIf="complexCoveredArea && complexCoveredArea.invalid  && complexCoveredArea.touched">Number is required</span>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> Total Volume</mat-label>
+      <input pattern="[0-9]*" formControlName="complexTotalVolume" matInput placeholder="">
+      <span style="color:red;" *ngIf="complexTotalVolume && complexTotalVolume.invalid  && complexTotalVolume.touched">Number is required</span>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> Total Heated Volume</mat-label>
+      <input pattern="[0-9]*" formControlName="complexTotalHeatedVolume" matInput placeholder="">
+      <span style="color:red;" *ngIf="complexTotalHeatedVolume && complexTotalHeatedVolume.invalid  && complexTotalHeatedVolume.touched">Number is required</span>
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline">
+      <mat-label>Address</mat-label>
+      <input formControlName="address" matInput placeholder="">
+    </mat-form-field>
+
+    <div class="form-group mt-2">
+      <label>Country</label>
+      <select class="form-select" formControlName="country" (change)="changeCountry($event)">
+        <option>--Choose country--</option>
+        <option *ngFor="let country of Countries">{{country.name}}</option>
+      </select>
+    </div>
+
+    <div class="form-group mt-4">
+      <label>State</label>
+      <select class="form-select" formControlName="state" (change)="changeState($event)">
+        <option>--Choose state-</option>
+        <option *ngFor="let state of states">{{state.name}}</option>
+      </select>
+    </div>
+
+    <div class="form-group mt-4 mb-4">
+      <label>City</label>
+      <select class="form-select" formControlName="city">
+        <option>--Choose city--</option>
+        <option *ngFor="let city of cities">{{city.name}}</option>
+      </select>
+    </div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Pin Code</mat-label>
+      <input pattern="[0-9]*" formControlName="pinCode" matInput placeholder="">
+      <span style="color:red;" *ngIf="pinCode && pinCode.invalid  && pinCode.touched">Number is required</span>
+    </mat-form-field>
+
+    
+        
+  </form>
+</div>
+<div mat-dialog-actions [align]="'end'">
+  <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+  <button mat-raised-button color="primary" (click)="addComplex()" [disabled]="complexForm.invalid">{{ actionBtn}}</button>
+</div>

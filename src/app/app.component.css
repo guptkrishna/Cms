@@ -1,0 +1,45 @@
+#showcase .container{
+    margin-top: 25vh;
+    
+    
+    
+}
+.container{
+    max-width: 1108px;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 22vh;
+    padding: 0 3rem;
+}
+#showcase h1{
+    font-size: 8rem;
+    margin-bottom: 70px ;
+    
+    color: #ccc;
+}
+#showcase h2{
+    font-size: 5rem;
+    color: #ccc;
+}
+#showcase{
+    font-family: 'PT Sans',sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 90vh;
+    background-image: url("src/assets/image/company3.jpg");
+    background-repeat: no-repeat cover;
+
+    position: relative;
+    overflow: hidden;
+    line-height: 1.6;
+}
+.footer-bottom{
+    background-color: #3f51b5;
+    padding: 1rem;
+    text-align: center;
+    color: white;
+}
+.example-spacer {
+    flex: 1 1 ;
+  }

@@ -1,0 +1,84 @@
+<h1 mat-dialog-title>Add Company</h1>
+<div mat-dialog-content>
+  <form [formGroup]="companyForm">
+    <mat-form-field class="invisible example-full-width" hideRequiredMarker="hide" appearance="outline">
+      <mat-label> Id</mat-label>
+      <input formControlName="id" matInput placeholder="">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> Code</mat-label>
+      <input formControlName="companyCode" matInput placeholder="">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> Name</mat-label>
+      <input pattern="[a-zA-Z][a-zA-Z ]+" matInput placeholder="" formControlName="companyName">
+      <span style="color: red;" *ngIf="companyName && companyName.invalid && companyName.touched">
+        This input filed is not valid</span>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> Description </mat-label>
+      <input formControlName="companyDescription" matInput placeholder="">
+      <span style="color: red;"
+        *ngIf="companyDescription && companyDescription.invalid && companyDescription.touched">
+        This input filed is not valid</span>
+    </mat-form-field>
+    
+
+    <mat-form-field appearance="outline">
+      <mat-label> Address </mat-label>
+      <input formControlName="address" matInput placeholder="">
+    </mat-form-field>
+    <!-- <mat-form-field appearance="outline">
+        <mat-label>Company Address2 </mat-label>
+        <input formControlName="address2" matInput placeholder="">
+         <span style="color: red;" *ngIf="companyName && companyName.invalid && companyName.touched">This input filed is not valid</span> 
+      </mat-form-field> -->
+      <!-- <mat-form-field appearance="outline">
+        <mat-label> Country</mat-label>
+        <input formControlName="country" matInput placeholder="">
+      </mat-form-field> -->
+      
+      <div class="form-group mt-2">
+        <label>Country</label>
+        <select class="form-select" formControlName="country" (change)="changeCountry($event)">
+          <option>--Choose country--</option>
+          <option *ngFor="let country of Countries">{{country.name}}</option>
+        </select>
+      </div>
+  
+      <div class="form-group mt-4">
+        <label>State</label>
+        <select class="form-select" formControlName="state" (change)="changeState($event)">
+          <option>--Choose state-</option>
+          <option *ngFor="let state of states">{{state.name}}</option>
+        </select>
+      </div>
+  
+      <div class="form-group mt-4 mb-4">
+        <label>City</label>
+        <select class="form-select" formControlName="city">
+          <option>--Choose city--</option>
+          <option *ngFor="let city of cities">{{city.name}}</option>
+        </select>
+      </div>
+
+    <!-- <mat-form-field appearance="outline">
+      <mat-label for="State"> State </mat-label>
+      <input formControlName="state" matInput placeholder="">
+    </mat-form-field> -->
+
+    <mat-form-field appearance="outline">
+      <mat-label> Pin Code </mat-label>
+      <input pattern="[0-9]*" formControlName="pinCode" matInput placeholder="">
+      <span style="color: red;" *ngIf="pinCode && pinCode.invalid && pinCode.touched">Number is required</span>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions [align]="'end'">
+  <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+  <button mat-raised-button color="primary" (click)="addCompany()" [disabled]="companyForm.invalid">
+    {{ actionBtn }}</button>
+</div>

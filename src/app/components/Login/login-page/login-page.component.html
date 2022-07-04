@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="text-center">
+          <h1>Login</h1>
+          <h6>Please Enter Email & Password !!</h6>
+        </div>
+        <form [formGroup]="loginFrom">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input formControlName="employeePortalUserName" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1">
+          </div>
+          <button type="submit" [disabled]="loginFrom.invalid" class="btn btn-primary" (click)="submit()">Submit</button>
+          <!-- <button mat-raised-button color="warn"  routerlink="/">Close</button> -->
+        </form>
+        <a routerLink="/employee">New User? click to signup</a>
+      </div>
+    </div>
+  </div>
+</div>

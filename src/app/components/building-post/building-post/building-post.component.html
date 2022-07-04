@@ -1,0 +1,144 @@
+<h1 mat-dialog-title>Add Building</h1>
+<div mat-dialog-content>
+    <form [formGroup]="buildingForm">
+      <mat-form-field class="invisible example-full-width" hideRequiredMarker="hide" appearance="outline">
+        <mat-label>Complex Id</mat-label>
+        <input formControlName="id" matInput placeholder="">
+      </mat-form-field>
+      <!-- <mat-form-field appearance="fill">
+        <mat-label>Company</mat-label>
+        <mat-select   [(ngModel)]="selectedCompany.companyId" (change)="onSelected($event.target)" >
+          <mat-option value="0">--select--</mat-option>
+          <mat-option *ngFor="let com of Company?.Company" [value]="com.id">{{com.companyName}}</mat-option>  
+        </mat-select>
+      </mat-form-field> -->
+
+      <mat-form-field appearance="fill">
+        <mat-label>Complex</mat-label>
+        <mat-select formControlName="complexId"  required >
+          <mat-option>--select--</mat-option>
+          <mat-option [value]="com.Complex" *ngFor="let com of Complex " [value]="com.id">{{com.complexName}}</mat-option>  
+        </mat-select>
+      </mat-form-field>
+      <!-- <mat-form-field appearance="outline">
+        <mat-label>ComplexId</mat-label>
+        <input formControlName="complexId" matInput placeholder="">
+      </mat-form-field> -->
+      <mat-form-field appearance="outline">
+        <mat-label> Code</mat-label>
+        <input formControlName="buildingCode" matInput placeholder="">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label> Name</mat-label>
+        <input formControlName="buildingName" matInput placeholder="">
+        <span style="color: red;" *ngIf="buildingName && buildingName.invalid && buildingName.touched">This input filed is not valid</span>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label> Availability </mat-label>
+        <input  formControlName="buildingAvailability" matInput placeholder="">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Main Use </mat-label>
+        <input pattern="[a-zA-Z][a-zA-Z ]+" formControlName="buildingMainUse" matInput placeholder="">
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Total Gross Area </mat-label>
+        <input pattern="[0-9]*" formControlName="buildingTotalGrossArea" matInput placeholder="">
+        <!-- <span style="color: red;" *ngIf="buildingTotalGrossArea && buildingTotalGrossArea.invalid && buildingTotalGrossArea.touched">please enter Number</span> -->
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Total Net Area</mat-label>
+        <input pattern="[0-9]*" formControlName="buildingTotalNetArea" matInput placeholder="">
+        <!-- <span style="color: red;" *ngIf="buildingTotalNetArea && buildingTotalNetArea.invalid && buildingTotalNetArea.touched">please enter Number</span> -->
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Coverd Area </mat-label>
+        <input pattern="[0-9]*" formControlName="buildingCoveredArea" matInput placeholder="">
+        <!-- <span style="color: red;" *ngIf="buildingCoveredArea && buildingCoveredArea.invalid && buildingCoveredArea.touched">please enter Number</span> -->
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Glazed Area </mat-label>
+        <input pattern="[0-9]*" formControlName="buildingGlazedArea" matInput placeholder="">
+        <!-- <span style="color: red;" *ngIf="buildingGlazedArea && buildingGlazedArea.invalid && buildingGlazedArea.touched">please enter Number</span> -->
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label> Total Volume </mat-label>
+        <input pattern="[0-9]*" formControlName="buildingTotalVolume" matInput placeholder="">
+        <!-- <span style="color: red;" *ngIf="buildingTotalVolume && buildingTotalVolume.invalid && buildingTotalVolume.touched">please enter Number</span> -->
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Cleanable Area </mat-label>
+        <input pattern="[0-9]*" formControlName="buildingCleanableArea" matInput placeholder="">
+        <!-- <span style="color: red;" *ngIf="buildingCleanableArea && buildingCleanableArea.invalid && buildingCleanableArea.touched">please enter Number</span> -->
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label> Total Heated Volume </mat-label>
+        <input pattern="[0-9]*" formControlName="buildingTotalheatedvolume" matInput placeholder="">
+        <!-- <span style="color: red;" *ngIf="buildingTotalheatedvolume && buildingTotalheatedvolume.invalid && buildingTotalheatedvolume.touched">please enter Number</span> -->
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>No.of Floors  </mat-label>
+        <input pattern="[0-9]*" formControlName="buildingNumberofFloors" matInput placeholder="">
+        <!-- <span style="color: red;" *ngIf="buildingNumberofFloors && buildingNumberofFloors.invalid && buildingNumberofFloors.touched">please enter Number</span> -->
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label> No.of Rooms  </mat-label>
+        <input pattern="[0-9]*" formControlName="buildingNumberofRoom" matInput placeholder="">
+        <!-- <span style="color: red;" *ngIf="buildingNumberofRoom && buildingNumberofRoom.invalid && buildingNumberofRoom.touched">please enter Number</span> -->
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Condiation </mat-label>
+        <input formControlName="buildingCondition" matInput placeholder="">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label> Criticality </mat-label>
+        <input formControlName="buildingCriticality" matInput placeholder="">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label> Address </mat-label>
+        <input formControlName="address" matInput placeholder="">
+        <!-- <span style="color: red;" *ngIf="companyName && companyName.invalid && companyName.touched">This input filed is not valid</span> -->
+      </mat-form-field>
+      <!-- <mat-form-field appearance="outline">
+        <mat-label>Building Address2 </mat-label>
+        <input formControlName="address2" matInput placeholder="">
+         <span style="color: red;" *ngIf="companyName && companyName.invalid && companyName.touched">This input filed is not valid</span>
+      </mat-form-field> -->
+      
+      <div class="form-group mt-2">
+        <label>Country</label>
+        <select class="form-select" formControlName="country" (change)="changeCountry($event)">
+          <option>--Choose country--</option>
+          <option *ngFor="let country of Countries">{{country.name}}</option>
+        </select>
+      </div>
+  
+      <div class="form-group mt-4">
+        <label>State</label>
+        <select class="form-select" formControlName="state" (change)="changeState($event)">
+          <option>--Choose state-</option>
+          <option *ngFor="let state of states">{{state.name}}</option>
+        </select>
+      </div>
+  
+      <div class="form-group mt-4 mb-4">
+        <label>City</label>
+        <select class="form-select" formControlName="city">
+          <option>--Choose city--</option>
+          <option *ngFor="let city of cities">{{city.name}}</option>
+        </select>
+      </div>
+      <mat-form-field appearance="outline">
+        <mat-label> Pin Code </mat-label>
+        <input pattern="[0-9]*" formControlName="pinCode" matInput placeholder="">
+        <span style="color: red;" *ngIf="pinCode && pinCode.invalid && pinCode.touched">Number is required</span>
+      </mat-form-field>     
+    </form>
+  </div>
+  <div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+    <button mat-raised-button color="primary" (click)="addBuilding()" [disabled]="buildingForm.invalid">{{ actionBtn }}</button>
+  </div>
+ 

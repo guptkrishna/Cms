@@ -1,0 +1,154 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    </button>
+    <span>Building</span>
+    <span class="example-spacer"></span>
+    <button mat-raised-button color="warn" (click)="openBuilding()">Add New</button>
+</mat-toolbar>
+
+<div class="container ">
+    <div style="margin-top: 10px;">
+        <mat-form-field appearance="fill" style="width: 20%;">
+            <mat-label>Search</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
+        </mat-form-field>
+        
+        <button mat-button class="m"  (click)="exportExcel()"><img src="assets\image\excel1.png" width="25px" height="25px"></button> 
+        <button mat-button (click)="openPDF()"><mat-icon color="warn"> picture_as_pdf</mat-icon></button>
+        <div class="mat-elevation-z8">
+
+            <div class="example-container ">
+                <table mat-table [dataSource]="dataSource" matSort id="htmlData">
+
+                    <ng-container cdkColumnDef="complexId">
+                        <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>Complex Name</th>
+                        <td cdk-cell *cdkCellDef="let row">{{row.complex.complexName}}</td>
+                    </ng-container>
+
+                    <ng-container cdkColumnDef="buildingCode">
+                        <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>Code</th>
+                        <td cdk-cell *cdkCellDef="let row">{{row.buildingCode}} </td>
+                    </ng-container>
+
+                    <ng-container cdkColumnDef="buildingName">
+                        <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>Name</th>
+                        <td cdk-cell *cdkCellDef="let row">{{row.buildingName}} </td>
+                    </ng-container>
+
+                    <ng-container cdkColumnDef="buildingAvailability">
+                        <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>Availability</th>
+                        <td cdk-cell *cdkCellDef="let row">{{row.buildingAvailability}} </td>
+                    </ng-container>
+                    <ng-container cdkColumnDef="buildingMainUse">
+                        <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>Main Use</th>
+                        <td cdk-cell *cdkCellDef="let row">{{row.buildingMainUse}} </td>
+                    </ng-container>
+
+                    <ng-container cdkColumnDef="buildingTotalGrossArea">
+                        <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>Total Gross Area</th>
+                        <td cdk-cell *cdkCellDef="let row">{{row.buildingTotalGrossArea }}m2</td>
+                    </ng-container>
+
+                    <ng-container cdkColumnDef="buildingTotalNetArea">
+                        <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>Total Net Area</th>
+                        <td cdk-cell *cdkCellDef="let row">{{row.buildingTotalNetArea}}m2</td>
+                    </ng-container>
+
+                    <ng-container cdkColumnDef="buildingCoveredArea">
+                        <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>Covered Area</th>
+                        <td cdk-cell *cdkCellDef="let row">{{row.buildingCoveredArea}}m2</td>
+                    </ng-container>
+
+                    <ng-container cdkColumnDef="buildingGlazedArea">
+                        <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>Glazed Area</th>
+                        <td cdk-cell *cdkCellDef="let row">{{row.buildingGlazedArea}}m2</td>
+                    </ng-container>
+
+                    <ng-container cdkColumnDef="buildingTotalVolume">
+                        <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>Total Volume</th>
+                        <td cdk-cell *cdkCellDef="let row">{{row.buildingTotalVolume}}m3</td>
+                    </ng-container>
+
+                    <ng-container cdkColumnDef="buildingCleanableArea">
+                        <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>Cleanable Area</th>
+                        <td cdk-cell *cdkCellDef="let row">{{row.buildingCleanableArea}}m2</td>
+                    </ng-container>
+
+                    <ng-container cdkColumnDef="buildingTotalheatedvolume">
+                        <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>Total Heated Volume</th>
+                        <td cdk-cell *cdkCellDef="let row">{{row.buildingTotalheatedvolume}}m3</td>
+                    </ng-container>
+
+                    <ng-container cdkColumnDef="buildingNumberofFloors">
+                        <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>Number of Floors</th>
+                        <td cdk-cell *cdkCellDef="let row">{{row.buildingNumberofFloors}} </td>
+                    </ng-container>
+
+                    <ng-container cdkColumnDef="buildingNumberofRoom">
+                        <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>Number of Rooms</th>
+                        <td cdk-cell *cdkCellDef="let row">{{row.buildingNumberofRoom}} </td>
+                    </ng-container>
+
+                    <ng-container cdkColumnDef="buildingCondition">
+                        <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>Codintions</th>
+                        <td cdk-cell *cdkCellDef="let row">{{row.buildingCondition}} </td>
+                    </ng-container>
+
+                    <ng-container cdkColumnDef="buildingCriticality">
+                        <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>Criticality</th>
+                        <td cdk-cell *cdkCellDef="let row">{{row.buildingCriticality}} </td>
+                    </ng-container>
+
+                    <ng-container cdkColumnDef="address">
+                        <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>Address</th>
+                        <td cdk-cell *cdkCellDef="let row">{{row.address}}</td>
+                    </ng-container>
+                    <!-- <ng-container cdkColumnDef="address2">
+                    <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>Building Address2</th>
+                    <td cdk-cell *cdkCellDef="let row">{{row.address2}}</td>
+                </ng-container> -->
+
+                    <ng-container cdkColumnDef="city">
+                        <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>City</th>
+                        <td cdk-cell *cdkCellDef="let row">{{row.city}}</td>
+                    </ng-container>
+
+                    <ng-container cdkColumnDef="state">
+                        <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>State</th>
+                        <td cdk-cell *cdkCellDef="let row">{{row.state}}</td>
+                    </ng-container>
+
+                    <ng-container cdkColumnDef="country">
+                        <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>Country</th>
+                        <td cdk-cell *cdkCellDef="let row">{{row.country}}</td>
+                    </ng-container>
+
+                    <ng-container cdkColumnDef="pinCode">
+                        <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header>Pin Code</th>
+                        <td cdk-cell *cdkCellDef="let row">{{row.pinCode}}</td>
+                    </ng-container>
+
+                    <ng-container cdkColumnDef="action">
+                        <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header> Action </th>
+                        <td cdk-cell *cdkCellDef="let row">
+
+                            <button mat-icon-button>
+                                <mat-icon color="primary" (click)="editBuilding(row)">edit</mat-icon>
+                                <mat-icon color="warn" (click)="deleteBuilding(row.id)">delete</mat-icon>
+                            </button>
+                        </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                    <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                    </tr>
+
+                </table>
+                <br>
+            </div>
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of building"></mat-paginator>
+        </div>
+    </div>
+</div>

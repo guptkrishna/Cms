@@ -1,0 +1,141 @@
+<h1 mat-dialog-title>Add Assets</h1>
+<div mat-dialog-content>
+  <form [formGroup]="assetsForm" autocomplete="off">
+
+    <mat-form-field class="invisible example-full-width" hideRequiredMarker="hide" appearance="outline">
+      <mat-label>Id</mat-label>
+      <input formControlName="id" matInput placeholder="">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Building </mat-label>
+      <mat-select formControlName="buildingId"  required >
+        <mat-option>--select--</mat-option>
+        <mat-option [value]="com.Building" *ngFor="let com of Building" [value]="com.id">{{com.buildingName}}</mat-option>  
+      </mat-select>
+    </mat-form-field>
+
+    <!-- <mat-form-field appearance="outline">
+      <mat-label>BuildingId</mat-label>
+      <input formControlName="buildingId" matInput placeholder="">
+    </mat-form-field> -->
+
+    <mat-form-field appearance="fill">
+      <mat-label>Assets Type </mat-label>
+      <mat-select formControlName="assetsType"  required >
+        <mat-option >--select--</mat-option>
+        <mat-option value="Furniture">Furniture </mat-option>  
+        <mat-option value="Electronics">Electronics </mat-option>  
+        <mat-option value="Plumber">Plumber </mat-option>  
+      </mat-select>     
+    </mat-form-field>
+    
+    <!-- <mat-form-field appearance="outline">
+      <mat-label>Assets Type</mat-label>
+      <input formControlName="assetsType" matInput placeholder="">
+    </mat-form-field> -->
+
+    <mat-form-field appearance="outline">
+      <mat-label> Code</mat-label>
+      <input formControlName="assetsCode" matInput placeholder="">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> Name</mat-label>
+      <input pattern="[a-zA-Z][a-zA-Z ]+" formControlName="assetsName" matInput placeholder="">
+      <!-- <span style="color: red;" *ngIf="assetsName && assetsName.invalid && assetsName.touched">please enter Name</span> -->
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> Manufacturer</mat-label>
+      <input pattern="[a-zA-Z][a-zA-Z ]+" formControlName="assetsManufacturer" matInput placeholder="">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> Supplier</mat-label>
+      <input pattern="[a-zA-Z][a-zA-Z ]+" formControlName="assetsSupplier" matInput placeholder="">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> Purchase Price</mat-label>
+      <input pattern="[0-9]*" formControlName="assetsPurchasePrice" matInput placeholder="">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> Invoice Number</mat-label>
+      <input  formControlName="assetsInvoiceNumber" matInput placeholder="">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> Current Value</mat-label>
+      <input pattern="[0-9]*" formControlName="assetsCurrentValue" matInput placeholder="">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> Year of Life</mat-label>
+      <input pattern="[0-9]*" formControlName="assetsYearofLife" matInput placeholder="">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Amortization End Date</mat-label>
+      <input formControlName="assetsAmortizationEnd" matInput [matDatepicker]="picker1">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Disposal Date</mat-label>
+      <input formControlName="assetsDisposalDate" matInput [matDatepicker]="picker2">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Amortization Start Date</mat-label>
+      <input formControlName="assetsAmortizationStart" matInput [matDatepicker]="picker3">
+      <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+      <mat-datepicker #picker3></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> Annual Amortization</mat-label>
+      <input formControlName="assetsAnnualAmortization" matInput placeholder="">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> Subset</mat-label>
+      <input pattern="[a-zA-Z][a-zA-Z ]+" formControlName="assetsSubset" matInput placeholder="">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> Condition</mat-label>
+      <input pattern="[a-zA-Z][a-zA-Z ]+" formControlName="assetsCondition" matInput placeholder="">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> Criticality</mat-label>
+      <input pattern="[a-zA-Z][a-zA-Z ]+" formControlName="assetsCriticality" matInput placeholder="">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Last Check Date</mat-label>
+      <input formControlName="assetsLastCheckDate" matInput [matDatepicker]="picker4">
+      <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+      <mat-datepicker #picker4></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> Floors Number</mat-label>
+      <input pattern="[0-9]*" formControlName="floor" matInput placeholder="">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> Rooms Number</mat-label>
+      <input pattern="[0-9]*" formControlName="room" matInput placeholder="">
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions [align]="'end'">
+  <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+  <button mat-raised-button color="primary" (click)="addAssets()" [disabled]="assetsForm.invalid">{{ actionBtn }}</button>
+</div>

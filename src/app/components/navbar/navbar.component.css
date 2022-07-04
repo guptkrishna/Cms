@@ -1,0 +1,15 @@
+/* .example-spacer {
+  flex: 1 1 auto;
+} */
+button:active{
+  background: #041a92;
+}
+button:focus{
+  background:#4963f0 ;
+}
+.example-spacer {
+  flex: 1 1 ;
+}
+.side{
+  padding-right: 10px;
+}

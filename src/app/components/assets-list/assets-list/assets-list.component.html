@@ -1,0 +1,163 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+  </button>
+  <span>Assets</span>
+  <span class="example-spacer"></span>
+  <button mat-raised-button color="warn" (click)="openAssets()">Add New</button>
+</mat-toolbar>
+
+<div class="container">
+  <div style="margin-top: 10px;">
+    <mat-form-field appearance="fill" style="width: 20%;">
+      <mat-label> Search </mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
+    </mat-form-field>
+    <button mat-button class="m"  (click)="exportExcel()"><img src="assets\image\excel1.png" width="25px" height="25px"></button> 
+    <button mat-button (click)="openPDF()"><mat-icon color="warn"> picture_as_pdf</mat-icon></button>
+
+    <div class="mat-elevation-z8">
+      <div class="example-container">
+        <table mat-table [dataSource]="dataSource" matSort id="htmlData">
+
+          <!-- <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+            <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+          </ng-container> -->
+
+
+          <ng-container cdkColumnDef="buildingName">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header> Building Name </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.building.buildingName}} </td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="assetsType">
+            <th [style.display]="'none'" cdk-header-cell *cdkHeaderCellDef cdk-sort-header> Type </th>
+            <td [style.display]="'none'" cdk-cell *cdkCellDef="let row"> {{row.assetsType}} </td>
+          </ng-container>
+
+
+          <ng-container cdkColumnDef="assetsCode">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header> Code </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.assetsCode}} </td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="assetsName">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header> Name </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.assetsName}} </td>
+          </ng-container>
+
+
+          <ng-container cdkColumnDef="assetsManufacturer">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header> Manufacturer </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.assetsManufacturer}} </td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="assetsSupplier">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header> Supplier </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.assetsSupplier}} </td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="assetsPurchasePrice">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header> Purchase Price </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.assetsPurchasePrice | currency:'INR'}} </td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="assetsInvoiceNumber">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header> Invoice Number </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.assetsInvoiceNumber}} </td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="assetsCurrentValue">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header> Current Value </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.assetsCurrentValue | currency:'INR'}} </td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="assetsYearofLife">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header> Life Time </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.assetsYearofLife}}Years </td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="assetsAmortizationEnd">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header> Amortization End </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.assetsAmortizationEnd  | date: 'dd/MM/yyyy'}} </td>
+          </ng-container>
+
+
+
+          <ng-container cdkColumnDef="assetsDisposalDate">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header> Disposal Date </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.assetsDisposalDate | date: 'dd/MM/yyyy'}} </td>
+          </ng-container>
+
+
+          <ng-container cdkColumnDef="assetsAmortizationStart">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header> Amortization Start </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.assetsAmortizationStart | date: 'dd/MM/yyyy'}} </td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="assetsAnnualAmortization">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header> Annual Amortization </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.assetsAnnualAmortization | currency:'INR'}}</td>
+          </ng-container>
+
+
+          <ng-container cdkColumnDef="assetsSubset">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header> Subset </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.assetsSubset}} </td>
+          </ng-container>
+
+
+          <ng-container cdkColumnDef="assetsCondition">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header> Condition </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.assetsCondition}} </td>
+          </ng-container>
+
+
+          <ng-container cdkColumnDef="assetsCriticality">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header> Criticality </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.assetsCriticality}} </td>
+          </ng-container>
+
+
+          <ng-container cdkColumnDef="assetsLastCheckDate">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header> Last Check Date </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.assetsLastCheckDate | date: 'dd/MM/yyyy'}} </td>
+          </ng-container>
+
+
+          <ng-container cdkColumnDef="floor">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header> Floors Number </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.floor}} </td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="room">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header> Rooms Number </th>
+            <td cdk-cell *cdkCellDef="let row"> {{row.room}} </td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="action">
+            <th cdk-header-cell *cdkHeaderCellDef cdk-sort-header> Action </th>
+            <td cdk-cell *cdkCellDef="let row">
+
+              <button mat-icon-button>
+                <mat-icon  color="primary" (click)="editAssets(row)">edit</mat-icon>
+                <mat-icon color="warn" (click)="deleteAssets(row.id)">delete</mat-icon>
+              </button>
+
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+          </tr>
+
+        </table>
+        <br>
+      </div>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of assets"></mat-paginator>
+    </div>
+  </div>
+</div>

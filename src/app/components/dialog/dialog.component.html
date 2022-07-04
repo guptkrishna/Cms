@@ -1,0 +1,127 @@
+<h1 mat-dialog-title>Add Employee</h1>
+<div mat-dialog-content>
+  <div class="container">
+    <form [formGroup]="employeeForm">
+      <mat-form-field class="invisible example-full-width" hideRequiredMarker="hide" appearance="outline">
+        <mat-label>Employee Id</mat-label>
+        <input formControlName="id" matInput placeholder="">
+      </mat-form-field>
+      
+      <mat-form-field appearance="fill">
+        <mat-label>Company</mat-label>
+        <mat-select formControlName="companyId" required>
+          <mat-option>--select--</mat-option>
+          <mat-option [value]="com.company" *ngFor="let com of Company" [value]="com.id">{{com.companyName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label> Code</mat-label>
+        <input formControlName="employeeCode" matInput placeholder="">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label> First Name</mat-label>
+        <input pattern="[a-zA-Z][a-zA-Z ]+" formControlName="employeeFirstName" matInput placeholder="">
+        <span style="color: red;"
+          *ngIf="employeeFirstName && employeeFirstName.invalid && employeeFirstName.touched">please enter
+          FirstName</span>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label> Last Name</mat-label>
+        <input pattern="[a-zA-Z][a-zA-Z ]+" formControlName="employeeLastName" matInput placeholder="">
+        <span style="color: red;"
+          *ngIf="employeeLastName && employeeLastName.invalid && employeeLastName.touched">please
+          enter LastName</span>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label> Email</mat-label>
+        <input pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" formControlName="employeeEmail" matInput
+          placeholder="">
+        <span style="color: red;" *ngIf="employeeEmail && employeeEmail.invalid && employeeEmail.touched">Email is not
+          valid</span>
+      </mat-form-field>
+
+
+      <mat-form-field appearance="outline">
+        <mat-label> Mobile Number</mat-label>
+        <input pattern="[0-9]*" formControlName="employeeMobileNumber" matInput placeholder="">
+        <span style="color: red;"
+          *ngIf="employeeMobileNumber && employeeMobileNumber.invalid && employeeMobileNumber.touched">MobileNumber is
+          not valid</span>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label> Portal User Name</mat-label>
+        <input formControlName="employeePortalUserName" matInput placeholder="">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label> Password</mat-label>
+        <input formControlName="password" matInput placeholder="">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label> Status</mat-label>
+        <input pattern="[a-zA-Z][a-zA-Z ]+" formControlName="employeeStatus" matInput placeholder="">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label> Team</mat-label>
+        <input formControlName="employeeTeam" matInput placeholder="">
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Parmanent Address </mat-label>
+        <input formControlName="address1" matInput placeholder="">
+
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Current Address </mat-label>
+        <input formControlName="address2" matInput placeholder="">
+
+      </mat-form-field>
+
+      <div class="form-group mt-2">
+        <label>Country</label>
+        <select class="form-select" formControlName="country" (change)="changeCountry($event)">
+          <option>--Choose country--</option>
+          <option *ngFor="let country of Countries">{{country.name}}</option>
+        </select>
+      </div>
+  
+      <div class="form-group mt-4">
+        <label>State</label>
+        <select class="form-select" formControlName="state" (change)="changeState($event)">
+          <option>--Choose state-</option>
+          <option *ngFor="let state of states">{{state.name}}</option>
+        </select>
+      </div>
+  
+      <div class="form-group mt-4 mb-4">
+        <label>City</label>
+        <select class="form-select" formControlName="city">
+          <option>--Choose city--</option>
+          <option *ngFor="let city of cities">{{city.name}}</option>
+        </select>
+      </div>
+
+     
+      <mat-form-field appearance="outline">
+        <mat-label> Pin Code </mat-label>
+        <input pattern="[0-9]*" formControlName="pinCode" matInput placeholder="">
+        <span style="color: red;" *ngIf="pinCode && pinCode.invalid && pinCode.touched">This input filed is not
+          valid</span>
+      </mat-form-field>
+
+    </form>
+  </div>
+  <div mat-dialog-actions [align]="'end'">
+    <!-- <a routerLink="/login">Already registered? clickto login</a> -->
+    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+    <button mat-raised-button color="primary" (click)="addEmployee()" [disabled]="employeeForm.invalid">
+      {{ actionBtn}}</button>
+  </div>

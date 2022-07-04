@@ -1,0 +1,46 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+  </button>
+  <span><button mat-button routerLink="/home" aria-label="Example icon-button with menu icon"><mat-icon>home</mat-icon></button></span>
+ 
+  <button mat-button routerLink="/company">Company</button>
+  <button mat-button routerLink="/employee">Employee</button>
+  <button mat-button routerLink="/complex">Complex</button>
+  <button mat-button routerLink="/building">Building</button>
+  <button mat-button routerLink="/assets">Assets</button>
+  <span class="example-spacer"></span> 
+  <!-- <button mat-button routerLink="/login" color="warn">Log in</button> -->
+  <!-- <button mat-button color="warn" (click)="login()" > login</button> -->
+  <!-- <button mat-raised-button color="warn" (click)="logout()" >logout</button> -->
+  
+  <button  mat-raised-button color="warn" (click)="logout()" >Log out</button>
+
+  <!-- <div>
+    <ul class="nav navbar-nav">
+      <li *ngIf="!loggedin()" class="nav-item">
+        <a class="nav-link" routerLink="login" routerLinkActive="active">Login</a>
+      </li>  -->
+  
+      <!-- <li *ngIf="loggedin()" class="nav-item">
+        <a class="nav-link" (click)="onLogout">Logout</a>
+      </li> -->
+
+      <!-- <div *ngIf="loggedin()" class="dropdown mr-5" dropdown>
+        <a href="#" class="dropdown-toggle text-light" dropdownToggle(click)="false">
+
+        </a>
+        <div class="dropdown-menu" *dropdownMenu>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-key"></i>Change Password</a>
+            <a (click)='onLogout()' class="dropdown-item">
+              <i class="fas fa-sign-out-alt"></i>Logout</a>
+        </div>
+      </div> -->
+  
+    <!-- </ul>
+  </div> -->
+</mat-toolbar>
+
+
+
+<router-outlet  ></router-outlet>

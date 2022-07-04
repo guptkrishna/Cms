@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'CMSProject'`, () => {
+  it(`should have as title 'hrms-client'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('CMSProject');
+    expect(app.title).toEqual('hrms-client');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('CMSProject app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('hrms-client app is running!');
   });
 });
